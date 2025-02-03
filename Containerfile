@@ -11,4 +11,4 @@ RUN python -m build
 RUN pip install dist/*.whl  # or dist/*.tar.gz if it generates a source distribution
 
 # Keep the container running
-CMD ["sh", "-c", "abhier-indexer \"$INDEXER_SOURCE\" \"$INDEXER_DEST\" --schedule-hourly"]
+CMD ["sh", "-c", "abhier-indexer \"$SAS_BASE_URL\" \"$ELASTICSEARCH_URL\" --schedule-hourly"]
