@@ -26,6 +26,7 @@ classifiers = [
 dependencies = [
   "beautifulsoup4~=4.12.3",
   "requests~=2.32.3",
+  "schedule~=1.1.0",
 ]
 version = "1.0.0"
 
