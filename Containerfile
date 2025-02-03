@@ -1,3 +1,4 @@
+# Containerfile to build an image that will run the indexer on a hourly basis.
 FROM python:3.9-slim
 
 # Set the working directory

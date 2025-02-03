@@ -168,7 +168,7 @@ def main():
     args = parser.parse_args()
     indexer = Indexer(args)
     if args.schedule_hourly:
-        schedule.every().hour.do(indexer.run())
+        schedule.every().hour.do(indexer.run)
     indexer.run()
 
 
