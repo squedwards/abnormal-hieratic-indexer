@@ -8,6 +8,7 @@ import json
 from bs4 import BeautifulSoup, NavigableString
 import logging
 import schedule
+import time
 
 
 class Indexer:
@@ -169,7 +170,11 @@ def main():
     indexer = Indexer(args)
     if args.schedule_hourly:
         schedule.every().hour.do(indexer.run)
-    indexer.run()
+        while True:
+            schedule.run_pending()
+            time.sleep(120)
+    else:
+        indexer.run()
 
 
 if __name__ == "__main__":
