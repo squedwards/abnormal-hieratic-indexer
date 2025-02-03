@@ -3,7 +3,7 @@ FROM python:3.9-slim
 # Set the working directory
 WORKDIR /app
 
-COPY . app
+COPY . /app
 
 # Install dependencies based on pyproject.toml
 RUN pip install --upgrade pip && pip install build
