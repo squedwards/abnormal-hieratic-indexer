@@ -7,6 +7,7 @@ import requests
 import json
 from bs4 import BeautifulSoup, NavigableString
 import logging
+import schedule
 
 
 class Indexer:
@@ -161,8 +162,13 @@ def main():
     parser.add_argument("--canvas-uri-prefix", help="Index only annotations targeting canvases whose URIs start with this prefix (default: %(default)s)",
     default="https://lab.library.universiteitleiden.nl/manifests/external/louvre/")
     parser.add_argument("--index", help="URI path to the ElasticSearch index (default: %(default)s)", default="/annotations/anno/")
+    parser.add_argument("--schedule-hourly", help="Schedule to run this script hourly. "
+                        "Because cron is not always easily available.",
+                        action="store_true")
     args = parser.parse_args()
     indexer = Indexer(args)
+    if args.schedule_hourly:
+        schedule.every().hour.do(indexer.run())
     indexer.run()
 
 
